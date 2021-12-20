@@ -1,0 +1,58 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  mvc:
+    throw-exception-if-no-handler-found: true
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: true
+
+  #文件配置
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+  aop:
+    proxy-target-class: true
+    auto: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/blog_system?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 1234
+
+server:
+  port: 8088
+# 日志
+logging:
+  pattern:
+    file: "my.log.%d{yyyy-MM-dd}.log"
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{50} - %msg%n"
+    path: "./logs"
+  logback:
+    rollingpolicy:
+      max-history: 30
+      max-file-size: 10MB
+  level:
+    com.example.test: debug
+    com.example.test.mapper: debug
+##mybatis
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+##mybatis-plus
+#mybatis-plus:
+#  type-enums-package: com.test.blogsystem.mapper.enums
+#  mapper-locations: classpath:/mapper/*.xml
+#  type-aliases-package: com.test.blogsystem
+#  configuration:
+#    call-setters-on-nulls: true
+#    use-generated-keys: true
+#  global-config:
+#    db-config:
+#      table-prefix:
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.blogsystem.mapper.ArticleInformationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.test.blogsystem.entity.ArticleInformation">
+        <id column="id" property="id" />
+        <result column="blog_id" property="blogId" />
+        <result column="article_content" property="articleContent" />
+        <result column="article_cover" property="articleCover" />
+        <result column="article_title" property="articleTitle" />
+        <result column="view_count" property="viewCount" />
+        <result column="is_open" property="isOpen" />
+        <result column="article_word_number" property="articleWordNumber" />
+        <result column="create_time" property="createTime" />
+        <result column="latest_update_time" property="latestUpdateTime" />
+        <result column="brief_description" property="briefDescription" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, blog_id, article_content, article_cover,article_title,view_count,is_open,article_word_number,create_time,latest_update_time,brief_description
+    </sql>
+    <insert id="insertArticleInformation" useGeneratedKeys="true" keyProperty="id">
+        insert into article_information
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="blogId != null">blog_id,</if>
+            <if test="articleContent != null">article_content,</if>
+            <if test="articleCover != null">article_cover,</if>
+            <if test="articleTitle != null">article_title,</if>
+            <if test="articleType != null">article_type,</if>
+            <if test="viewCount != null">view_count,</if>
+            <if test="isOpen != null">is_open,</if>
+            <if test="articleWordNumber != null">article_word_number,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="latestUpdateTime != null">latest_update_time,</if>
+            <if test="briefDescription != null">brief_description,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="blogId != null">#{blogId},</if>
+            <if test="articleContent != null">#{articleContent},</if>
+            <if test="articleCover != null">#{articleCover},</if>
+            <if test="articleTitle != null">#{articleTitle},</if>
+            <if test="articleType != null">#{articleType},</if>
+            <if test="viewCount != null">#{viewCount},</if>
+            <if test="isOpen != null">#{isOpen},</if>
+            <if test="articleWordNumber != null">#{articleWordNumber},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="latestUpdateTime != null">#{latestUpdateTime},</if>
+            <if test="briefDescription != null">#{briefDescription},</if>
+        </trim>
+    </insert>
+    <update id="updateIsOpenByIdAfter">
+        update article_information
+        set is_open = #{updateIsOpen}
+        where
+        id= #{id}
+    </update>
+
+</mapper>

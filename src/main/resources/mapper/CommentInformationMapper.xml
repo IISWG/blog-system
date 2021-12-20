@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.blogsystem.mapper.CommentInformationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.test.blogsystem.entity.CommentInformation">
+        <id column="id" property="id" />
+        <result column="comment_content" property="commentContent" />
+        <result column="comment_time" property="commentTime" />
+        <result column="comment_blog_id" property="commentBlogId" />
+        <result column="article_id" property="articleId" />
+        <result column="comment_id" property="commentId" />
+        <result column="to_id" property="toId" />
+        <result column="comment_level" property="commentLevel" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, comment_content, comment_time, comment_blog_id, article_id, comment_id, to_id, comment_level
+    </sql>
+    <insert id="insertByComment" useGeneratedKeys="true" keyProperty="id">
+        insert into comment_information
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="commentContent != null">comment_content,</if>
+            <if test="commentTime != null">comment_time,</if>
+            <if test="commentBlogId != null">comment_blog_id,</if>
+            <if test="articleId != null">article_id,</if>
+            <if test="commentId != null">comment_id,</if>
+            <if test="toId != null">to_id,</if>
+            <if test="commentLevel != null">comment_level,</if>
+        </trim>
+        values
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="commentContent != null">#{commentContent},</if>
+            <if test="commentTime != null">#{commentTime},</if>
+            <if test="commentBlogId != null">#{commentBlogId},</if>
+            <if test="articleId != null">#{articleId},</if>
+            <if test="commentId != null">#{commentId},</if>
+            <if test="toId != null">#{toId},</if>
+            <if test="commentLevel != null">#{commentLevel},</if>
+
+        </trim>
+    </insert>
+
+</mapper>
