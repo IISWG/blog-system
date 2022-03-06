@@ -1,7 +1,6 @@
 package com.test.blogsystem.controller;
 
 
-import com.test.blogsystem.config.MyAuthenticationFailureHandler;
 import com.test.blogsystem.entity.ArticleInformation;
 import com.test.blogsystem.entity.BlogPersonalInform;
 import com.test.blogsystem.entity.VerifyCode;
@@ -46,8 +45,6 @@ import java.time.LocalDateTime;
 public class BlogPersonalInformController {
     @Resource
     ArticleInformationServiceImpl articleInformationService;
-    @Resource
-    MyAuthenticationFailureHandler myAuthenticationFailureHandler;
     @Resource
     BlogPersonalInformServiceImpl blogPersonalInformService;
     @Resource
